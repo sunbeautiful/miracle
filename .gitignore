@@ -1,2 +1,15 @@
 # Project exclude paths
 /common/target/
+/.idea/$CACHE_FILE$
+/.idea/.gitignore
+/.idea/compiler.xml
+/.idea/dataSources.xml
+/.idea/dictionaries
+/.idea/encodings.xml
+/.idea/sonarlint/issuestore/index.pb
+/.idea/jarRepositories.xml
+/miracle.iml
+/.idea/misc.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/saveactions_settings.xml
+/.idea/vcs.xml

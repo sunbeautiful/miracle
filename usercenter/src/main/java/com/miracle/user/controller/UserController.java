@@ -3,6 +3,7 @@ package com.miracle.user.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +18,8 @@ public class UserController {
 
   @RequestMapping(path = "/login")
   @Operation(summary = "登录")
-  public String login() {
+  public String login(@RequestParam(required = true) String name,
+      @RequestParam(required = true) String password) {
     return "success";
 
   }
