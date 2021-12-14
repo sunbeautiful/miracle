@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    password: Shiqi0828.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.142.94.150:3306/dev
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 10
+      max-lifetime: 540000
+      minimum-idle: 5
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/master.xml
+
+
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /user
+

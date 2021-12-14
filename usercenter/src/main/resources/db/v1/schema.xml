@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <property name="blob_type" value="nvarchar(max)" dbms="mssql"/>
+  <property name="blob_type" value="jsonb" dbms="postgresql"/>
+  <property name="blob_type" value="json" dbms="mysql"/>
+  <property name="blob_type" value="BLOB"/>
+
+  <changeSet author="user" id="v1-001">
+    <createTable remarks="用户" tableName="uc_user">
+      <column name="id" remarks="主键" type="varchar(36)">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="pk_uc_user"/>
+      </column>
+      <column name="name" remarks="姓名" type="nvarchar(64)"/>
+      <column name="password" remarks="密码" type="nvarchar(64)"/>
+      <column name="salt" remarks="盐值" type="nvarchar(64)"/>
+      <column name="state" remarks="状态" type="nvarchar(64)"/>
+      <column name="inner_version" remarks="内部版本" type="bigint"/>
+      <column name="creator" remarks="创建人" type="varchar(64)"/>
+      <column name="updater" remarks="更新人" type="varchar(64)"/>
+      <column name="create_time" remarks="创建时间" type="timestamp"/>
+      <column name="update_time" remarks="更新时间" type="timestamp"/>
+    </createTable>
+  </changeSet>
+
+
+</databaseChangeLog>
