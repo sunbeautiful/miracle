@@ -18,8 +18,8 @@ public class UserController {
 
   @RequestMapping(path = "/login")
   @Operation(summary = "登录")
-  public String login(@RequestParam(required = true) String name,
-      @RequestParam(required = true) String password) {
+  public String login(@RequestParam(name = "name") String name,
+      @RequestParam(name = "password") String password) {
     return "success";
 
   }
