@@ -41,6 +41,16 @@ public class User extends BaseEntity {
   @Column(name = "state")
   private String state;
 
+  public User() {
+  }
+
+  public User(String name, String password, String salt, String state) {
+    this.name = name;
+    this.password = password;
+    this.salt = salt;
+    this.state = state;
+  }
+
   public String getName() {
     return name;
   }
