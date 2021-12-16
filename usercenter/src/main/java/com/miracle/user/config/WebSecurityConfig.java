@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -24,16 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.inMemoryAuthentication().withUser("admin") // 添加用户admin
-        .password("{noop}admin")
-        .roles("");
     auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
   }
 
   public PasswordEncoder passwordEncoder() {
-//    return new BCryptPasswordEncoder();
+    return new BCryptPasswordEncoder();
     // 使用不使用加密算法保持密码
-    return NoOpPasswordEncoder.getInstance();
+//    return NoOpPasswordEncoder.getInstance();
 
   }
 
@@ -41,7 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
         //设置哪些路径可以直接访问，不需要认证
-        .antMatchers("/login").permitAll()
+        .antMatchers("/login", "/v1/user/register", "/miracle").permitAll()
+        .antMatchers("/swagger-ui/**").permitAll()
+        .antMatchers("/api-docs/**").permitAll()
         .anyRequest()  // 任何请求都需要身份验证
         .authenticated()
         .and()
