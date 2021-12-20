@@ -33,3 +33,9 @@ springdoc:
   swagger-ui:
     path: /miracle
 
+jwt:
+  expireTime: 180
+  tokenSecret: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJ6l
+
+
+

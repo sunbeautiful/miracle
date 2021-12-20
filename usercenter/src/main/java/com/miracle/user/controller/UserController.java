@@ -31,7 +31,7 @@ public class UserController {
   public Result login(@RequestParam(name = "name") String name,
       @RequestParam(name = "password") String password) {
 
-    return Result.succeed();
+    return Result.succeed("success");
 
   }
 

@@ -28,8 +28,11 @@ public class UserService implements UserDetailsService {
   @Autowired
   UserRepository userRepository;
 
+  /**
+   * 自定义UserDetailsService
+   */
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+  public UserDetails loadUserByUsername(String username) {
     Optional<User> firstByName = userRepository.findFirstByName(username);
     if (firstByName.isPresent()) {
       User user = firstByName.get();
