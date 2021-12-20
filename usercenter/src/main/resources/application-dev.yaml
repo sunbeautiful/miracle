@@ -26,12 +26,21 @@ spring:
 logging:
   config: classpath:log4j2-spring-dev.xml
 
+
 springdoc:
+  swagger:
+    title: 用户中心
+    description: 用户中心
+    version: 1.0.0
   api-docs:
     enabled: true
     path: /api-docs
   swagger-ui:
+    enabled: true
     path: /miracle
+    persistAuthorization: true
+
+
 
 jwt:
   expireTime: 180

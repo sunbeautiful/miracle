@@ -25,5 +25,23 @@
     </createTable>
   </changeSet>
 
+  <changeSet author="user" id="v1-002">
+    <createTable remarks="系统日志" tableName="sys_log">
+      <column name="id" remarks="主键" type="varchar(36)">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sys_log"/>
+      </column>
+      <column name="name" remarks="姓名" type="nvarchar(64)"/>
+      <column name="ip" remarks="ip" type="nvarchar(64)"/>
+      <column name="access_type" remarks="访问类型" type="nvarchar(64)"/>
+      <!-- 公用部分-->
+      <column name="state" remarks="状态" type="nvarchar(64)"/>
+      <column name="inner_version" remarks="内部版本" type="bigint"/>
+      <column name="creator" remarks="创建人" type="varchar(64)"/>
+      <column name="updater" remarks="更新人" type="varchar(64)"/>
+      <column name="create_time" remarks="创建时间" type="timestamp"/>
+      <column name="update_time" remarks="更新时间" type="timestamp"/>
+    </createTable>
+  </changeSet>
+
 
 </databaseChangeLog>
