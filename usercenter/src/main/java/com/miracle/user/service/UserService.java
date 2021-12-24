@@ -1,11 +1,13 @@
 package com.miracle.user.service;
 
 import com.miracle.common.constants.UserStates;
+import com.miracle.user.config.JwtProperties;
 import com.miracle.user.domain.User;
 import com.miracle.user.dto.UserDto;
 import com.miracle.user.repository.UserRepository;
 import java.util.Collections;
 import java.util.Optional;
+import javax.annotation.Resource;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +29,9 @@ public class UserService implements UserDetailsService {
 
   @Autowired
   UserRepository userRepository;
+
+  @Resource
+  JwtProperties jwtProperties;
 
   /**
    * 自定义UserDetailsService

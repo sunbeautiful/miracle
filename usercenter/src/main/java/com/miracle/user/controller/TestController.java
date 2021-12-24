@@ -23,4 +23,9 @@ public class TestController {
     return Result.succeed("oh ! test success ");
   }
 
+  public static void main(String[] args) {
+    String url = "rest/v1/system/statemodel/{classname}/defaultstatename";
+    System.out.println(url.replace("{classname}", "class-name"));
+  }
+
 }

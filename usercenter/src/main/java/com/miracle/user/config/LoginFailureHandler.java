@@ -1,12 +1,29 @@
 package com.miracle.user.config;
 
+import com.alibaba.fastjson.JSON;
+import com.miracle.common.Result;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
+
 /**
  * @author sqq
- * @description 自定义认证失败类：当用户输入错误的账号或者密码时，就会进入这个处理类，同样要在配置类中指明
- * @date 2021/12/20 15:11
- * @Component public class LoginFailureHandler implements AuthenticationFailureHandler {
- * @Override public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse
- * response, AuthenticationException exception) throws IOException, ServletException {
- * System.out.println("JwtAuthenticationEntryPoint:" + exception.getMessage());
- * response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "凭证错误"); } }
+ * @description
+ * @date 2021/12/24 16:48
  */
+@Component
+public class LoginFailureHandler implements AuthenticationFailureHandler {
+
+  @Override
+  public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+      AuthenticationException exception) throws IOException, ServletException {
+    // 指定响应格式是json
+    String json = JSON.toJSONString(Result.failed("认证失败"));
+    response.setContentType("text/json;charset=utf-8");
+    response.getWriter().write(json);
+  }
+}
